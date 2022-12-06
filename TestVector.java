@@ -3,7 +3,7 @@
 public class TestVector {
     public static void main(String[] args) {
         var vector = new MyVector<>();
-
+        vector.setSizeArray(16);
         vector.add(1);
         vector.add("Здесь строка");
         vector.add(-1);

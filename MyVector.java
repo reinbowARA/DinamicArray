@@ -1,11 +1,22 @@
 import java.util.Arrays;
 
 public class MyVector<T>{
-    private final int INIT_SIZE = 16;
+    private int SizeArray;
     private final int CUT_RATE = 4;
-    private Object[] array = new Object[INIT_SIZE];
+    private Object[] array;
     private int pointer = 0;
  
+    /**
+     * InnerMyVector
+     */
+    MyVector(){}
+    MyVector(int SizeArray) {
+        this.SizeArray = SizeArray;  
+    }
+    public void setSizeArray(int sizeArray) {
+        this.SizeArray = sizeArray;
+        array = new Object[SizeArray];
+    }
     /*
     Добавляет новый элемент в список. При достижении размера внутреннего
     массива происходит его увеличение в два раза.
@@ -36,7 +47,7 @@ public class MyVector<T>{
          array[i] = array[i+1];
        array[pointer] = null;
        pointer--;
-       if (array.length > INIT_SIZE && pointer < array.length / CUT_RATE) 
+       if (array.length > SizeArray && pointer < array.length / CUT_RATE) 
           resize(array.length/2); // если элементов в CUT_RATE раз меньше чем 
                                   // длина массива, то уменьшу в два раза
     }
@@ -83,7 +94,7 @@ public class MyVector<T>{
             array[i] = null;
         }
         pointer  = 0;
-        if (array.length > INIT_SIZE && pointer < array.length / CUT_RATE) 
+        if (array.length > SizeArray && pointer < array.length / CUT_RATE) 
           resize(array.length/2); // если элементов в CUT_RATE раз меньше чем 
                                   // длина массива, то уменьшу в два раза
     }
@@ -91,7 +102,7 @@ public class MyVector<T>{
     public void removeEndElements(){
         array[pointer] = null;
         pointer--;
-        if (array.length > INIT_SIZE && pointer < array.length / CUT_RATE) 
+        if (array.length > SizeArray && pointer < array.length / CUT_RATE) 
           resize(array.length/2); // если элементов в CUT_RATE раз меньше чем 
                                   // длина массива, то уменьшу в два раза
     }
