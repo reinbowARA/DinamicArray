@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 
 public class MyVector<T>{
     private int SizeArray;
@@ -76,15 +76,17 @@ public class MyVector<T>{
         try{if(pointer < index){
             throw new java.lang.ArrayIndexOutOfBoundsException();
         }
-        var array2 = Arrays.copyOfRange(array, pointer - index, pointer+1);
-        array[index]= item;
-        /*for (int i = 0; i < array2.length; i++) {
-            System.out.println(array2[i]);
-        }*/
-        array[pointer++] = item;
-        for (int i = 0; i < array2.length; i++) {
-            array[index + i +1] = array2[i];
-        }}catch(ArrayIndexOutOfBoundsException e){
+        Object[] array2 = new Object[pointer - index];
+        
+        for (int i = 0; i < pointer - index; i++) {
+            array2[i] = array[index + i];
+        }
+        pointer++;
+        for (int i = 1; i < pointer-index; i++) {
+            array[index+i] = array2[i-1];
+        }
+        array[index] = item;
+    }catch(ArrayIndexOutOfBoundsException e){
             System.out.println("входящий индекс превышает размер изначального массива");
         }
     }

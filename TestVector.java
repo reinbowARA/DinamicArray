@@ -25,15 +25,9 @@ public class TestVector {
         vector.getArray();
 
         System.out.println();
-        vector.addIndex(100, 4);
+        vector.addIndex(100, 2);
         System.out.println();
         vector.getArray();
-        vector.removeEndElements();
-        System.out.println();
-        vector.getArray();
-        System.out.println();
-        System.out.println(vector.size());
-        vector.removeAll();
-        System.out.println(vector.size());
+
     }
 }
